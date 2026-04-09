@@ -1,0 +1,142 @@
+.services {
+  background-color: var(--bg-color);
+  padding: 5rem 0;
+}
+
+.title-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin: 1.5rem auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.service-card {
+  position: relative;
+  background: transparent;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 15;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+  filter: brightness(0.9);
+}
+
+.service-card:hover .service-img-container img {
+  transform: scale(1.08);
+  filter: brightness(1);
+}
+
+.service-tag-simple {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 5;
+}
+
+.service-details-simple {
+  padding: 0 0.5rem;
+}
+
+.service-header-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.service-header-simple h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0;
+}
+
+.service-icon-minimal {
+  color: rgba(255, 255, 255, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon-minimal {
+  color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.service-desc-simple {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+.service-link-simple {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transition-smooth);
+}
+
+.arrow-right {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.service-link-simple:hover {
+  letter-spacing: 3px;
+}
+
+.service-link-simple:hover .arrow-right {
+  transform: translateX(8px);
+}
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .service-img-container {
+    aspect-ratio: 16 / 9;
+  }
+}

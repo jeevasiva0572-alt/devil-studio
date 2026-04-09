@@ -1,0 +1,233 @@
+.portfolio {
+  background-color: var(--bg-color);
+}
+
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-secondary);
+  padding: 0.8rem 1.5rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  cursor: pointer;
+}
+
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: var(--transition-smooth);
+  transform: translateX(-50%);
+  box-shadow: var(--accent-glow);
+}
+
+.filter-btn:hover {
+  color: var(--text-main);
+}
+
+.filter-btn.active {
+  color: var(--text-main);
+}
+
+.filter-btn.active::after {
+  width: 30px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.portfolio-item {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+  filter: brightness(1);
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 3rem;
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.overlay-info {
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.portfolio-item:hover .overlay-info {
+  transform: translateY(0);
+}
+
+.overlay-info span {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.overlay-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 75vh;
+  object-fit: contain;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 1), 0 0 40px rgba(255, 0, 21, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: #fff;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  opacity: 0.6;
+}
+
+.close-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.lightbox-info {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.lightbox-info h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.lightbox-info p {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--accent);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .portfolio-filters {
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+
+  .close-btn {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .lightbox img {
+    max-height: 60vh;
+  }
+}
