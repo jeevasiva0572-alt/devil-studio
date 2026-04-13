@@ -111,7 +111,7 @@ button {
 .title-center p {
   color: var(--text-secondary);
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -205,4 +205,9 @@ button {
   z-index: 1;
   pointer-events: none;
   mix-blend-mode: screen;
+}
+
+.about-page {
+  padding-top: 80px; /* Offset for fixed navbar */
+  min-height: 80vh;
 }

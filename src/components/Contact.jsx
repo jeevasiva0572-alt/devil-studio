@@ -1,6 +1,5 @@
 import React from 'react';
 import './Contact.css';
-import { MessageSquare } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -44,6 +43,13 @@ const Contact = () => {
           </div>
           <button type="submit" className="btn-solid-glow">Send Message</button>
         </form>
+      </div>
+
+      {/* Floating Chat Button (replacement for WhatsApp/Contact) */}
+      <div className="chat-btn-floating">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
       </div>
     </section>
   );

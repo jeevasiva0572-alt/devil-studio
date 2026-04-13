@@ -1,12 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import About from './components/About';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import PortfolioPage from './pages/PortfolioPage';
+import AboutPage from './pages/AboutPage';
+import ServiceViewPage from './components/ServiceViewPage';
 
 function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.hash || '#/');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentPath(window.location.hash || '#/');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1
@@ -20,7 +31,6 @@ function App() {
       });
     }, observerOptions);
 
-    // Initial observation
     const observeElements = () => {
       const revealElements = document.querySelectorAll('.reveal');
       revealElements.forEach(el => observer.observe(el));
@@ -28,7 +38,6 @@ function App() {
 
     observeElements();
 
-    // Watch for dynamic elements (e.g., after filtering the portfolio)
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });
@@ -42,16 +51,21 @@ function App() {
       observer.disconnect();
       mutationObserver.disconnect();
     };
-  }, []);
+  }, [currentPath]); // Re-observe when path changes
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar currentPath={currentPath} />
       <main>
-        <Hero />
-        <Services />
-        <Portfolio />
-        <About />
+        {currentPath === '#/portfolio' ? (
+          <PortfolioPage />
+        ) : currentPath === '#/about' ? (
+          <AboutPage />
+        ) : currentPath === '#/view' ? (
+          <ServiceViewPage />
+        ) : (
+          <Home />
+        )}
       </main>
       <Footer />
     </div>

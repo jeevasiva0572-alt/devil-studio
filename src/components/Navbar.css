@@ -30,9 +30,8 @@
 }
 
 .logo span {
-  font-weight: 400;
+  font-weight: 300;
   color: var(--accent);
-  opacity: 1;
   margin-left: 2px;
 }
 
@@ -51,8 +50,23 @@
   transition: var(--transition-smooth);
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active-link {
   color: var(--text-main);
+}
+
+.nav-links li a.active-link {
+  position: relative;
+}
+
+.nav-links li a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
 }
 
 .btn-nav-glow {
@@ -111,7 +125,7 @@
   .navbar {
     padding: 1.5rem 0;
   }
-  
+
   .hamburger {
     display: flex;
   }
